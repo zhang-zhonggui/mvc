@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpSession;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -26,11 +25,21 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public AJAXResult list(String username, String password) {
-        List<Map<String, Object>> list = admin.list(username, password);
-        if (list == null) {
+        Map<String, Object> stu = admin.list(username, password);
+        if (stu == null) {
             return AJAXResult.error();
         }
-        httpSession.setAttribute("admin", admin);
+        httpSession.setAttribute("admin", stu);
         return AJAXResult.success();
     }
+
+    @Override
+    public AJAXResult getName() {
+        Object admin = httpSession.getAttribute("admin");
+        if (admin == null) {
+            return AJAXResult.success();
+        }
+        return AJAXResult.success(admin);
+    }
+
 }

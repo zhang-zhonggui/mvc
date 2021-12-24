@@ -3,8 +3,6 @@ package com.zzg.mvc.dao.impl;
 import com.zzg.mvc.dao.AdminDAO;
 import com.zzg.mvc.util.DAOUtil;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.Map;
@@ -17,11 +15,11 @@ import java.util.Map;
 @Repository
 public class AdminDAOImpl implements AdminDAO {
     @Override
-    public List<Map<String, Object>> list(String username, String password) {
+    public Map<String, Object> list(String username, String password) {
         String sql = "SELECT * from t_login where username = ? and password = ?";
         List<Map<String, Object>> query = DAOUtil.query(sql, username, password);
-        if (query.size()>0){
-            return DAOUtil.query(sql, username, password);
+        if (query.size() > 0) {
+            return query.get(0);
         }
         return null;
     }

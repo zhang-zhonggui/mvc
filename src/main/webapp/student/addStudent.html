@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+          integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.9/vue.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <style>
+        .addstu{
+            width:600px;
+            margin:50px auto;
+        }
+    </style>
+</head>
+<body>
+<div id="app" class="addstu">
+    <div class="form-group">
+        <label >学生姓名</label>
+        <input type="text" class="form-control" v-model="student.name" placeholder="请输入学生姓名">
+    </div>
+    <div class="form-group">
+        <label >学生年龄</label>
+        <input type="text" class="form-control" v-model="student.age"  placeholder="请输入学生年龄">
+    </div>
+    <div class="form-group">
+        <label >学生地址</label>
+        <input type="text" class="form-control" v-model="student.address"  placeholder="E请输入学生地址">
+    </div>
+    <div class="form-group">
+        <label >学生班级</label>
+        <select v-model="student.grade">
+            <option v-for="(s,i) in classArr" v-bind:value="s.id">{{s.grade}}</option>
+        </select>
+    </div>
+
+    <button type="button"  @click="addStudent()" class="btn btn-default">添加</button>
+
+</div>
+<script>
+    $.get("/mvc/grade/list",function (backDate) {
+        vm.classArr=backDate.data
+    })
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            classArr:[],
+            student:{},
+        },
+        methods: {
+            addStudent: function(){
+                $.post("/mvc/stu/addStudent",vm.student,function (backDate) {
+
+                })
+            }
+        },
+    });
+</script>
+</body>
+</html>

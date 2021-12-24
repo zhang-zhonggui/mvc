@@ -9,5 +9,5 @@ import java.util.Map;
  * @DateTime: 2021/11/27 9:58
  */
 public interface AdminDAO {
-    List<Map<String, Object>> list(String username, String password);
+   Map<String, Object> list(String username, String password);
 }

@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AJAXResult {
-    private int code;
+    private Integer code;
     private String msg;
     private Object data;
 
