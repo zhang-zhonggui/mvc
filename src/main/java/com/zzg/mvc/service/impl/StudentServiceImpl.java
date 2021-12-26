@@ -37,6 +37,10 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public AJAXResult addStudent(StudentVO student) {
-        return null;
+        int i = studentDAO.addStudent(student);
+        if (i > 0) {
+            return AJAXResult.success();
+        }
+        return AJAXResult.error();
     }
 }

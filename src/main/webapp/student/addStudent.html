@@ -51,7 +51,10 @@
         methods: {
             addStudent: function(){
                 $.post("/mvc/stu/addStudent",vm.student,function (backDate) {
-
+                        if(backDate.code == 200){
+                            window.location.href="/mvc/student/student.html";
+                        }
+                        alert(backDate.msg);
                 })
             }
         },
