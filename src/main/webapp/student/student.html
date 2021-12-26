@@ -30,7 +30,7 @@
             <td>
                 <button class="btn  btn-danger" @click="deleteStu(s.id)"><span class="glyphicon glyphicon-trash"></span>
                 </button>
-                <button class="btn  btn-primary" @click="updateStu(s.id)"><span class="glyphicon glyphicon-pencil"></span></button>
+                <a class="btn  btn-primary" :href="'/mvc/student/update.html?id='+s.id"><span class="glyphicon glyphicon-pencil"></span></a>
             </td>
         </tr>
     </table>

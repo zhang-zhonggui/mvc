@@ -5,6 +5,7 @@ import com.zzg.mvc.result.AJAXResult;
 import com.zzg.mvc.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -31,5 +32,13 @@ public class StudentContorller {
     @RequestMapping("addStudent")
     public AJAXResult addStudent(StudentVO student) {
         return  service.addStudent(student);
+    }
+    @RequestMapping("getStu")
+    public AJAXResult getStu(int id) {
+      return service.getStu(id);
+    }
+    @RequestMapping("update")
+    public  AJAXResult update(StudentVO stu){
+        return service.updateStu(stu);
     }
 }

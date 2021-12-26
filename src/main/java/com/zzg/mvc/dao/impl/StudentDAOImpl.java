@@ -17,7 +17,7 @@ import java.util.Map;
 public class StudentDAOImpl implements StudentDAO {
     @Override
     public List<Map<String, Object>> list() {
-        String sql = "select s.id,s.name, s.address ,g.grade from student s inner join t_class g where s.grade = g.id";
+        String sql = "select s.id,s.name,s.age, s.address ,g.grade from student s inner join t_class g where s.grade = g.id";
         return DAOUtil.query(sql);
     }
 
@@ -31,5 +31,22 @@ public class StudentDAOImpl implements StudentDAO {
     public int addStudent(StudentVO stu) {
         String sql = "insert into student values(null,?,?,?,?)";
         return DAOUtil.update(sql, stu.getName(), stu.getAge(), stu.getAddress(), stu.getGrade());
+    }
+
+    @Override
+    public Map<String, Object> getStu(int id) {
+        String sql = "select * from student where id=?";
+        List<Map<String, Object>> query = DAOUtil.query(sql, id);
+        if (query.size() > 0) {
+           return query.get(0);
+        }
+        return null;
+    }
+
+    @Override
+    public int updateStu(StudentVO stu) {
+        String sql = "update student set name = ? ,age = ? ,address = ?,grade = ? where id = ? ";
+        int update = DAOUtil.update(sql, stu.getName(), stu.getAge(), stu.getAddress(), stu.getGrade(), stu.getId());
+        return update;
     }
 }

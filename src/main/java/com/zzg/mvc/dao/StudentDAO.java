@@ -14,4 +14,7 @@ public interface StudentDAO {
     List<Map<String, Object>> list();
     int deleteStu(int id);
     int addStudent(StudentVO stu);
+    Map<String, Object> getStu(int id);
+
+    int updateStu(StudentVO stu);
 }

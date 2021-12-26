@@ -15,4 +15,8 @@ public interface StudentService {
     AJAXResult delete(int id);
 
     AJAXResult addStudent(StudentVO student);
+
+    AJAXResult getStu(int id);
+
+    AJAXResult updateStu(StudentVO stu);
 }

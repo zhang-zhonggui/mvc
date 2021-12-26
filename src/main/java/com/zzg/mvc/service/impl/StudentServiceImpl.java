@@ -43,4 +43,22 @@ public class StudentServiceImpl implements StudentService {
         }
         return AJAXResult.error();
     }
+
+    @Override
+    public AJAXResult getStu(int id) {
+        Map<String, Object> stu = studentDAO.getStu(id);
+        if (stu.size() > 0){
+            return AJAXResult.success(stu);
+        }
+        return AJAXResult.error();
+    }
+
+    @Override
+    public AJAXResult updateStu(StudentVO stu) {
+        int i = studentDAO.updateStu(stu);
+        if (i > 0) {
+            return AJAXResult.success();
+        }
+        return AJAXResult.error();
+    }
 }
