@@ -39,6 +39,8 @@
 
 </div>
 <script>
+
+
     var id = window.location.href.split("=")[1];
     $.get("/mvc/grade/list", function (backDate) {
         vm.classArr = backDate.data;
@@ -63,6 +65,8 @@
             }
         },
     });
+
+
 </script>
 </body>
 </html>
